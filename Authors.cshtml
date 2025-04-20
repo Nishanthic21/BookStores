@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BookStore.Web.Models.Author>
+@{
+    ViewData["Title"] = "Author Name";
+}
+<h1>Author Name</h1>
+
+<p>
+    <a asp-controller="BookStoreAdmin" asp-action="AddAuthor" class="btn btn-primary">Create New Author </a>
+</p>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Author Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Author in Model)
+            {
+                <tr>
+                    <td>@Author?.AuthorName</td>
+                    <td>
+                        <a href="@Url.Action("EditAuthor", "BookStoreAdmin", new { id = Author?.AuthorId })"
+                           class="btn btn-primary btn-sm">
+                            Edit
+                        </a>
+                        <a href="@Url.Action("DeleteAuthor", "BookStoreAdmin", new { id = Author?.AuthorId })"
+                           class="btn btn-primary btn-sm">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        No Authors found.
+    </div>
+}

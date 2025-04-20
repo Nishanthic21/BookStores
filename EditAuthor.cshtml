@@ -1,0 +1,10 @@
+﻿@model BookStore.Web.Models.Author
+
+<form class="form-container" asp-controller="BookStoreAdmin" asp-action="EditAuthor" method="post">
+	<div>
+		<label for="AuthorName" class="form-control"> Author Name:</label>
+		<input type="text" class="form-control" id="CategoryName" name="AuthorName" value="@Model.AuthorName" required />
+	</div>
+	<input type="hidden" id="AuthorId" name="AuthorId" value="@Model.AuthorId" />
+	<input type="submit" value="Edit Author" class="btn btn-primary" />
+</form>
